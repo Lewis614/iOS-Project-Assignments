@@ -9,8 +9,6 @@
 #import "CardGameViewController.h"
 #import "Deck.h"
 #import "Card.h"
-#import "PlayingCard.h"
-#import "PlayingCardDeck.h"
 #import "CardMatchGame.h"
 
 @interface CardGameViewController ()
@@ -57,9 +55,15 @@
  */
 
 
--(Deck *) createDeck{
-    //lec3:Not good because it is not generic, epecific for playingcarddeck
-    return [[PlayingCardDeck alloc] init];
+-(Deck *) createDeck{  //abstract
+    
+    //Lec3:Not good because it is not generic, epecific for playingcarddeck
+    //return [[PlayingCardDeck alloc] init];
+    //Lec6: Updated to be generic, make this CardViewController be abstract.
+    return nil;
+    
+    /*In objective C you can not declare a class as abstract class, you have to document it. and any abstract method should be PUBLIC.
+     */
 }
 
 -(NSMutableArray *) filpHistory {

@@ -21,6 +21,7 @@
 		F07B8CC01A4911E000F0480D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07B8CA21A4911DF00F0480D /* UIKit.framework */; };
 		F07B8CC81A4911E000F0480D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F07B8CC61A4911E000F0480D /* InfoPlist.strings */; };
 		F07B8CCA1A4911E000F0480D /* FirstProjectCardGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B8CC91A4911E000F0480D /* FirstProjectCardGameTests.m */; };
+		F08FD2441A5DDA85008CED49 /* PlayingCardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F08FD2431A5DDA85008CED49 /* PlayingCardGameViewController.m */; };
 		F0AC60351A54FF0A00DE8360 /* CardMatchGame.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AC60341A54FF0A00DE8360 /* CardMatchGame.m */; };
 		F0B2F5F61A50CDDF007EC891 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B2F5F51A50CDDF007EC891 /* Card.m */; };
 		F0B2F5FA1A533F4E007EC891 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B2F5F91A533F4E007EC891 /* Deck.m */; };
@@ -58,6 +59,8 @@
 		F07B8CC51A4911E000F0480D /* FirstProjectCardGameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FirstProjectCardGameTests-Info.plist"; sourceTree = "<group>"; };
 		F07B8CC71A4911E000F0480D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F07B8CC91A4911E000F0480D /* FirstProjectCardGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstProjectCardGameTests.m; sourceTree = "<group>"; };
+		F08FD2421A5DDA85008CED49 /* PlayingCardGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardGameViewController.h; sourceTree = "<group>"; };
+		F08FD2431A5DDA85008CED49 /* PlayingCardGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardGameViewController.m; sourceTree = "<group>"; };
 		F0AC60331A54FF0A00DE8360 /* CardMatchGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchGame.h; sourceTree = "<group>"; };
 		F0AC60341A54FF0A00DE8360 /* CardMatchGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchGame.m; sourceTree = "<group>"; };
 		F0B2F5F41A50CDDF007EC891 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = Model/Card.h; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				F07B8CB01A4911DF00F0480D /* Main.storyboard */,
 				F07B8CB31A4911DF00F0480D /* CardGameViewController.h */,
 				F07B8CB41A4911DF00F0480D /* CardGameViewController.m */,
+				F08FD2421A5DDA85008CED49 /* PlayingCardGameViewController.h */,
+				F08FD2431A5DDA85008CED49 /* PlayingCardGameViewController.m */,
 				F0B2F5F71A50CE4E007EC891 /* Model */,
 				F07B8CB61A4911DF00F0480D /* Images.xcassets */,
 				F07B8CA51A4911DF00F0480D /* Supporting Files */,
@@ -291,6 +296,7 @@
 				F0B2F6031A535EEB007EC891 /* PlayingCardDeck.m in Sources */,
 				F07B8CAB1A4911DF00F0480D /* main.m in Sources */,
 				F0B2F5F61A50CDDF007EC891 /* Card.m in Sources */,
+				F08FD2441A5DDA85008CED49 /* PlayingCardGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +424,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FirstProjectCardGame/FirstProjectCardGame-Prefix.pch";
 				INFOPLIST_FILE = "FirstProjectCardGame/FirstProjectCardGame-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FirstProjectCardGame;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -431,7 +437,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FirstProjectCardGame/FirstProjectCardGame-Prefix.pch";
 				INFOPLIST_FILE = "FirstProjectCardGame/FirstProjectCardGame-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FirstProjectCardGame;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -452,7 +458,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "FirstProjectCardGameTests/FirstProjectCardGameTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FirstProjectCardGameTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -470,7 +476,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FirstProjectCardGame/FirstProjectCardGame-Prefix.pch";
 				INFOPLIST_FILE = "FirstProjectCardGameTests/FirstProjectCardGameTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FirstProjectCardGameTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

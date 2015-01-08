@@ -61,7 +61,7 @@ static const int MATH_BONUS = 4;
 static const int COST_TO_CHOOSE = 1;
 
 
-//entire logic happens here.
+//Entire logic happens here.
 
 -(void) chooseCardAtIndex:(NSUInteger)index{
     Card *card  = [self cardAtIndex:index];
