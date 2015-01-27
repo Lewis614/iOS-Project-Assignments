@@ -11,8 +11,11 @@
 #import "Deck.h"
 
 @interface CardGameViewController : UIViewController
-//public for using
 
+//public for using
+-(NSAttributedString *)titleForCard:(Card *)card;
+-(UIImage *)backgroundImageForCard:(Card *)card;
+-(void) updateUI;
 
 
 

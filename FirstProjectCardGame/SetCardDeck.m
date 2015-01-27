@@ -19,7 +19,7 @@
         for(NSString *color in [SetCard validColor]){
             for(NSString *symbol in [SetCard validSymbol]) {
                 for (NSString *shading in [SetCard validShading]) {
-                    for(NSInteger number =0; number< [SetCard maxNumber];number++) {
+                    for(NSInteger number =1; number<= [SetCard maxNumber];number++) {
                         SetCard *card = [[SetCard alloc]init];
                         card.color = color;
                         card.shading = shading;
