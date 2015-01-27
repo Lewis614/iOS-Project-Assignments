@@ -26,4 +26,12 @@
     return score;
 }
 
+-(NSInteger) numberOfInitialSettingOfMatchingCard {
+    // if it is nil, set to default 2.
+    if (!_numberOfInitialSettingOfMatchingCard) {
+        _numberOfInitialSettingOfMatchingCard =2;
+    }
+    return _numberOfInitialSettingOfMatchingCard;
+}
+
 @end

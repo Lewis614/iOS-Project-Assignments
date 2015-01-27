@@ -21,5 +21,14 @@
     return [[PlayingCardDeck alloc] init];
 }
 
+/* change the tool bar option.
+-(void)viewDidLoad {
+    [self.tabBarController.tabBar setTintColor:[UIColor redColor]];
+    [self.tabBarController.tabBar setBackgroundColor:[UIColor greenColor]];
+}
+*/
+
+
+
 
 @end

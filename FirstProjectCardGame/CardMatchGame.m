@@ -135,7 +135,8 @@ static const int COST_TO_CHOOSE = 1;
 
 -(NSInteger) maxMatchingCards {
     // Make it generic to fit any number of card matching.
-    if(_maxMatchingCards<2) _maxMatchingCards = 2;
+    Card *card = [self.cards firstObject];
+    if(_maxMatchingCards<card.numberOfInitialSettingOfMatchingCard) _maxMatchingCards = card.numberOfInitialSettingOfMatchingCard;
     return _maxMatchingCards;
 }
 

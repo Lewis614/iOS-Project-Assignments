@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 Cornell University. All rights reserved.
 //
 
-#import "Deck.h"
 
 #import <Foundation/Foundation.h>
+#import "Deck.h"
+
 
 @interface CardMatchGame : NSObject
 
