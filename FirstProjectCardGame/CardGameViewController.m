@@ -9,24 +9,19 @@
 #import "CardGameViewController.h"
 #import "Deck.h"
 #import "Card.h"
-#import "CardMatchGame.h"
+
 
 @interface CardGameViewController ()
-//@property (weak, nonatomic) IBOutlet UILabel *flipLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *leftCardLabel;
-
-//@property (nonatomic) int flipCount;
-//@property (nonatomic) int leftCardCount;
 
 @property (strong,nonatomic) Deck *deck;
-@property (strong,nonatomic) CardMatchGame *game;
+
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (strong, nonatomic) NSMutableArray *flipHistory;
 
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UIButton *restartButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelector;
-@property (weak, nonatomic) IBOutlet UITextField *explainTextLabel;
+
 @property (weak, nonatomic) IBOutlet UISlider *historySlider;
 
 @end
@@ -44,6 +39,7 @@
     return _game;
     
 }
+
 
 /*
  - (Deck *) deck{
@@ -155,7 +151,9 @@
         // if the card is matched, it will disable the button.
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-    
+    [self updateUIDescription];
+}
+-(void) updateUIDescription{
     if(self.game) {
         NSString *description = @"";
         if([self.game.lastChosenCards count]){
@@ -166,7 +164,9 @@
             description = [cardContents componentsJoinedByString:@" "];
         }
         if(self.game.lastScore > 0) description = [NSString stringWithFormat:@"Matched! %@ for %d points!", description, self.game.lastScore];
-        else if(self.game.lastScore < 0) description = [NSString stringWithFormat:@" %@ don't match! %d points penalty!", description, -self.game.lastScore];
+        else if(self.game.lastScore < 0) {
+            description = [NSString stringWithFormat:@" %@ don't match! %d points penalty!", description, -self.game.lastScore];
+        }
         
         self.explainTextLabel.text = description;
         //Check if the description is already stored in the history and store it if needed.

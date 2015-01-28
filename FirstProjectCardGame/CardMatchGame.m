@@ -123,6 +123,8 @@ static const int COST_TO_CHOOSE = 1;
             }
             self.score += (self.lastScore - COST_TO_CHOOSE);
             card.chosen = YES;
+            //if(self.lastScore<0) card.chosen = NO;
+            //else card.chosen = YES;
             
         }
     }

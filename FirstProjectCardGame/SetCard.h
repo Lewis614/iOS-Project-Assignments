@@ -21,4 +21,5 @@
 +(NSArray *) validSymbol;
 +(NSInteger) maxNumber;
 
++ (NSArray *)cardsFromText:(NSString *)text;
 @end

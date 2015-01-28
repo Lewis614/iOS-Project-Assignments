@@ -113,6 +113,11 @@
     return score;
 }
 
++ (NSArray *)cardsFromText:(NSString *)text{
+    return nil;
+}
+
+
 @end
 
 

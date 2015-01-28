@@ -6,9 +6,11 @@
 //  Copyright (c) 2015 Cornell University. All rights reserved.
 //
 
+
 #import "SetCardGameViewController.h"
 #import "SetCardDeck.h"
 #import "SetCard.h"
+#import "CardMatchGame.h"
 
 @interface SetCardGameViewController ()
 
@@ -54,15 +56,50 @@
         if([setCard.shading isEqualToString:@"solid"]) [attributes setObject:@-5 forKey:NSStrokeWidthAttributeName];
         if([setCard.shading isEqualToString:@"open"]) [attributes setObject:@+5 forKey:NSStrokeWidthAttributeName];
         if([setCard.shading isEqualToString:@"striped"]) [attributes addEntriesFromDictionary:
-                                            @{NSStrokeWidthAttributeName: @-5,
-                                            NSStrokeColorAttributeName:attributes[NSForegroundColorAttributeName],
-                                            NSForegroundColorAttributeName: [attributes[NSForegroundColorAttributeName] colorWithAlphaComponent:0.5]}];
+                  @{NSStrokeWidthAttributeName: @-5,
+                    NSStrokeColorAttributeName:attributes[NSForegroundColorAttributeName],
+                NSForegroundColorAttributeName: [attributes[NSForegroundColorAttributeName] colorWithAlphaComponent:0.4]}];
         
     }
-    NSAttributedString *res =[[NSAttributedString alloc] initWithString:tempSymbol attributes:attributes];
-    //######Added Feature######
-    return card.isChosen ? [[NSAttributedString alloc]initWithString:@""] : res;
+    NSAttributedString *title =[[NSAttributedString alloc] initWithString:tempSymbol attributes:attributes];
+    
+    
+    return title;
+
 }
+
+
+-(void) updateUIDescription{
+    if(self.game) {
+        NSMutableAttributedString *description = [[NSMutableAttributedString alloc]init];
+        if([self.game.lastChosenCards count]){
+            for(Card *card in self.game.lastChosenCards) {
+
+                [description appendAttributedString: [self titleForCard:card]];
+                [description appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
+            }
+            
+            if(self.game.lastScore > 0){
+                NSString *matchPart = [NSString stringWithFormat:@"Matched! Get %d points!", self.game.lastScore];
+                NSInteger loc =description.length;
+                [description appendAttributedString:[[NSAttributedString alloc]initWithString:matchPart]];
+                [description replaceCharactersInRange:NSMakeRange(loc, matchPart.length) withString:matchPart];
+            }
+            
+            else if(self.game.lastScore < 0){
+                NSString *dismatchPart = [NSString stringWithFormat:@" Don't match! %d points penalty!", -self.game.lastScore];
+                
+                NSInteger loc =description.length;
+                [description appendAttributedString:[[NSAttributedString alloc]initWithString:dismatchPart]];
+                [description replaceCharactersInRange:NSMakeRange(loc, dismatchPart.length) withString:dismatchPart];
+            }
+        }
+        self.explainTextLabel.attributedText = description;
+    }
+    
+}
+
+
 
 
 @end

@@ -9,14 +9,17 @@
 
 #import <UIKit/UIKit.h>
 #import "Deck.h"
+#import "CardMatchGame.h"
 
 @interface CardGameViewController : UIViewController
-
 //public for using
+@property (weak, nonatomic) IBOutlet UITextField *explainTextLabel;
+@property (strong,nonatomic) CardMatchGame *game;
+
 -(NSAttributedString *)titleForCard:(Card *)card;
 -(UIImage *)backgroundImageForCard:(Card *)card;
 -(void) updateUI;
-
+-(void) updateUIDescription;
 
 
 //protected, for subclass to implement 
