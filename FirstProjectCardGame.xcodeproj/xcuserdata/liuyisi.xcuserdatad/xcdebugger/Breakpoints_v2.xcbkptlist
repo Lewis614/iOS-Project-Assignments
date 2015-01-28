@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstProjectCardGame/SetCardGameViewController.m"
-            timestampString = "444093974.888435"
+            timestampString = "444114769.357419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "@implementation SetCardGameViewController"
             landmarkType = "3">
          </BreakpointContent>

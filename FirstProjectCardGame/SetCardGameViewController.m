@@ -31,7 +31,7 @@
 
 
 -(UIImage *)backgroundImageForCard:(Card *)card {
-    return [UIImage imageNamed:card.isChosen ? @"setcardSelected" : @"setcardBack1"];
+    return [UIImage imageNamed:card.isChosen ? @"setcardSelectLand" : @"setcardBackLand"];
 }
 
 -(NSAttributedString *)titleForCard:(Card *)card {
@@ -59,7 +59,9 @@
                                             NSForegroundColorAttributeName: [attributes[NSForegroundColorAttributeName] colorWithAlphaComponent:0.5]}];
         
     }
-    return [[NSAttributedString alloc] initWithString:tempSymbol attributes:attributes];
+    NSAttributedString *res =[[NSAttributedString alloc] initWithString:tempSymbol attributes:attributes];
+    //######Added Feature######
+    return card.isChosen ? [[NSAttributedString alloc]initWithString:@""] : res;
 }
 
 
