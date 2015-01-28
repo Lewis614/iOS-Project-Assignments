@@ -15,6 +15,9 @@
 //public for using
 @property (weak, nonatomic) IBOutlet UITextField *explainTextLabel;
 @property (strong,nonatomic) CardMatchGame *game;
+@property (strong, nonatomic) NSMutableArray *flipHistory;
+
+
 
 -(NSAttributedString *)titleForCard:(Card *)card;
 -(UIImage *)backgroundImageForCard:(Card *)card;

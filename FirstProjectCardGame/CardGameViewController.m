@@ -9,14 +9,14 @@
 #import "CardGameViewController.h"
 #import "Deck.h"
 #import "Card.h"
-
+#import "HistoryDetailsViewController.h"
 
 @interface CardGameViewController ()
 
 @property (strong,nonatomic) Deck *deck;
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
-@property (strong, nonatomic) NSMutableArray *flipHistory;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UIButton *restartButton;
@@ -62,7 +62,7 @@
      */
 }
 
--(NSMutableArray *) filpHistory {
+-(NSMutableArray *) flipHistory {
     if(!_flipHistory){
         _flipHistory = [[NSMutableArray alloc]init];
     }
@@ -130,10 +130,10 @@
     NSInteger sliderValue = lroundf(self.historySlider.value);
     //[self.historySlider setValue:sliderValue animated:NO];
     [self.historySlider setValue:sliderValue];
-    if([self.filpHistory count]) {
+    if([self.flipHistory count]) {
         self.explainTextLabel.alpha =
-                    (sliderValue == [self.filpHistory count]-1 ? 1.0 :0.4);
-        self.explainTextLabel.text = [self.filpHistory objectAtIndex:sliderValue];
+                    (sliderValue == [self.flipHistory count]-1 ? 1.0 :0.4);
+        self.explainTextLabel.text = [self.flipHistory objectAtIndex:sliderValue];
     }
     
     
@@ -165,13 +165,13 @@
         }
         if(self.game.lastScore > 0) description = [NSString stringWithFormat:@"Matched! %@ for %d points!", description, self.game.lastScore];
         else if(self.game.lastScore < 0) {
-            description = [NSString stringWithFormat:@" %@ don't match! %d points penalty!", description, -self.game.lastScore];
+            description = [NSString stringWithFormat:@"%@ don't match! %d points penalty!", description, -self.game.lastScore];
         }
         
         self.explainTextLabel.text = description;
         //Check if the description is already stored in the history and store it if needed.
         self.explainTextLabel.alpha = 1;
-        if(![description isEqualToString:@"" ]&& ![self.filpHistory.lastObject isEqualToString:description]) {
+        if(![description isEqualToString:@"" ]&& ![self.flipHistory.lastObject isEqualToString:description]) {
             [self.flipHistory addObject:description];
             [self resetSliderRange:[self.flipHistory count]-1];
         }
@@ -197,38 +197,12 @@
     return [UIImage imageNamed:card.isChosen ? @"cardFront" : @"cardBack"];
 }
 
-/*HW1 contents:
- 
-- (IBAction)touchCardButton:(UIButton *)sender
-{
-    // index starting from 0;
-    if([sender.currentTitle length]){
-        [sender setBackgroundImage:[UIImage imageNamed:@"cardBack"]
-                          forState:UIControlStateNormal];
-        [sender setTitle:@"" forState:UIControlStateNormal];
-        self.flipCount++;
-    } else {
-        Card *card = [self.deck drawRandomCard];
-        if(card){
-            [sender setBackgroundImage:[UIImage imageNamed:@"cardFront"]
-                              forState:UIControlStateNormal];
-            
-            [sender setTitle:card.contents forState:UIControlStateNormal];
-            self.leftCardCount--;
-            self.flipCount++;
-            //========
-             PlayingCard *shownCard = (PlayingCard *)[self.deck drawRandomCard];
-             //cannot slove the JQK:
-             //NSString *randomCardContent = [NSString stringWithFormat:@"%@%d",shownCard.suit, shownCard.rank];
-             NSString *randomCardContent = [NSString stringWithFormat:@"%@",shownCard.contents];
-            //========
- 
- 
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"Show History"]) {
+        if([segue.destinationViewController isKindOfClass:[HistoryDetailsViewController class]]){
+            //prepare the array to segue
+            [segue.destinationViewController setHistory:self.flipHistory];
         }
     }
-    
 }
-
-*/
-
 @end
