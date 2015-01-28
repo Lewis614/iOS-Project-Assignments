@@ -32,7 +32,7 @@
         NSMutableAttributedString *historyText = [[NSMutableAttributedString alloc]init];
         NSInteger count = 1;
         for(NSAttributedString *item in self.history){
-            [historyText appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%2d: ", count++]]];
+            [historyText appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"-----STEP %2d:-----\n", count++]]];
             [historyText appendAttributedString:item];
             [historyText appendAttributedString:[[NSAttributedString alloc]initWithString:@"\n\n"]];
         }
@@ -44,7 +44,7 @@
         NSInteger count = 1;
         NSString *historyText = @"";
         for(NSString *item in self.history) {
-            historyText = [NSString stringWithFormat:@"%@%2d: %@\n\n",historyText,count++,item];
+            historyText = [NSString stringWithFormat:@"%@-----STEP %2d:-----\n%@\n\n",historyText,count++,item];
         }
         self.historyTextView.text = historyText;
     }
