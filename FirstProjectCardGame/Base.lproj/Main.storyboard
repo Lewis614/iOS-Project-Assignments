@@ -8,7 +8,7 @@
         <scene sceneID="Np4-Y0-GqF">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="yWV-8b-NAh" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Hns-ht-ihx">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -23,11 +23,11 @@
             </objects>
             <point key="canvasLocation" x="-686" y="-262"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Set Cards-->
         <scene sceneID="FiA-ha-9Nj">
             <objects>
                 <navigationController definesPresentationContext="YES" id="7Sx-bC-o3U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ZaX-qU-sj8"/>
+                    <tabBarItem key="tabBarItem" title="Set Cards" image="iconSetCard" id="ZaX-qU-sj8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mzp-NV-Rwb">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -39,11 +39,11 @@
             </objects>
             <point key="canvasLocation" x="-99" y="92"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Playing Cards-->
         <scene sceneID="Noq-Fm-yoy">
             <objects>
                 <navigationController definesPresentationContext="YES" id="uP7-Uf-tff" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="uFa-Vm-sKf"/>
+                    <tabBarItem key="tabBarItem" title="Playing Cards" image="iconPlayingCard" id="uFa-Vm-sKf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ltM-uK-1lW">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -873,9 +873,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="explainTextLabel" destination="LwB-L6-iJy" id="2qI-DQ-Ppe"/>
                         <outlet property="restartButton" destination="btH-mY-KVv" id="6Q9-rJ-1zw"/>
                         <outlet property="scoreLabel" destination="Mnz-hB-Yj4" id="0ed-gY-4Eo"/>
+                        <outlet property="setCardexplainTextLabel" destination="LwB-L6-iJy" id="yWE-wL-NQZ"/>
                         <outletCollection property="cardButtons" destination="hrB-au-n0Q" id="An0-Un-g8z"/>
                         <outletCollection property="cardButtons" destination="Sbx-rU-LwZ" id="epx-zS-Arq"/>
                         <outletCollection property="cardButtons" destination="nsa-iJ-clE" id="Fgg-bN-iw5"/>
@@ -958,6 +958,8 @@
     <resources>
         <image name="cardBack" width="397" height="606"/>
         <image name="cardFront" width="1602" height="2448"/>
+        <image name="iconPlayingCard" width="30" height="30"/>
+        <image name="iconSetCard" width="30" height="30"/>
         <image name="setcardBackLand" width="2048" height="1536"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

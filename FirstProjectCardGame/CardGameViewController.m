@@ -15,9 +15,11 @@
 
 @property (strong,nonatomic) Deck *deck;
 
+
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 
-
+//BUT Not required to make a superclass’s outlets and actions public (by putting them in its header file)
+@property (weak, nonatomic) IBOutlet UITextField *explainTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UIButton *restartButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelector;

@@ -14,6 +14,7 @@
 #import "HistoryDetailsViewController.h"
 
 @interface SetCardGameViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *setCardexplainTextLabel;
 
 @end
 
@@ -73,7 +74,7 @@
 -(void) updateUIDescription{
     if(self.game) {
         NSAttributedString * description =[self demoDescriptionWithAttributedString];
-        self.explainTextLabel.attributedText =description;
+        self.setCardexplainTextLabel.attributedText =description;
         
         if(![description isEqualToAttributedString:[[NSAttributedString alloc]initWithString:@""]] && ![self.flipHistory.lastObject isEqualToAttributedString:description]){
             [self.flipHistory addObject:description];
