@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "Deck.h"
 #import "CardMatchGame.h"
+#import "GameResult.h"
+
 
 @interface CardGameViewController : UIViewController
 //public for using
@@ -19,6 +21,11 @@
 
 @property (strong,nonatomic) CardMatchGame *game;
 @property (strong, nonatomic) NSMutableArray *flipHistory;
+//The game type needs to be set by the child game-view controllers
+@property(strong,nonatomic) NSString *gameType;
+
+// Parent class needs a new property to hold the game result,
+@property(strong,nonatomic) GameResult *gameResult;
 
 
 -(NSAttributedString *)titleForCard:(Card *)card;

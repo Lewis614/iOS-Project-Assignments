@@ -18,6 +18,7 @@
 
 //override and implement the abstract method in superclass
 -(Deck *) createDeck {
+    self.gameType = @"Playing Cards";
     return [[PlayingCardDeck alloc] init];
 }
 

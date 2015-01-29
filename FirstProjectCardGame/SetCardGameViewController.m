@@ -29,6 +29,8 @@
 
 
 -(Deck *)createDeck {
+    
+    self.gameType = @"Set Cards";
     // remember to create a SetDeck using method in SetDeck, not a super abstract method.
     return [[SetCardDeck alloc]init];
 }

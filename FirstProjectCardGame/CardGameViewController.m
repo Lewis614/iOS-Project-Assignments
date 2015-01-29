@@ -11,6 +11,7 @@
 #import "Card.h"
 #import "HistoryDetailsViewController.h"
 
+
 @interface CardGameViewController ()
 
 @property (strong,nonatomic) Deck *deck;
@@ -95,6 +96,7 @@
     //clear all the setting and use lazy initialzation in updateUI to recreate them.
     self.game = nil;
     self.flipHistory = nil;
+    self.gameResult = nil;
     
     //reset the slider range.
     [self resetSliderRange:0];
@@ -153,6 +155,8 @@
         // if the card is matched, it will disable the button.
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    //Change the score of the game results when the user interface gets updated
+    self.gameResult.score = self.game.score;
     [self updateUIDescription];
 }
 -(void) updateUIDescription{
@@ -207,4 +211,17 @@
         }
     }
 }
+
+//=======HW3 Extra Task2=========
+
+//property of itself.lazy instanation
+- (GameResult *)gameResult {
+    if(!_gameResult) {
+        _gameResult = [[GameResult alloc]init];
+    }
+    _gameResult.gameType = self.gameType;
+    return _gameResult;
+}
+
+
 @end
