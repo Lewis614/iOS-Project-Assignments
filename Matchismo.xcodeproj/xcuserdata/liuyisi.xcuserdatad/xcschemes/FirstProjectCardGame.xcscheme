@@ -17,7 +17,7 @@
                BlueprintIdentifier = "F07B8C9A1A4911DF00F0480D"
                BuildableName = "FirstProjectCardGame.app"
                BlueprintName = "FirstProjectCardGame"
-               ReferencedContainer = "container:FirstProjectCardGame.xcodeproj">
+               ReferencedContainer = "container:Matchismo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "F07B8CBB1A4911E000F0480D"
                BuildableName = "FirstProjectCardGameTests.xctest"
                BlueprintName = "FirstProjectCardGameTests"
-               ReferencedContainer = "container:FirstProjectCardGame.xcodeproj">
+               ReferencedContainer = "container:Matchismo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "F07B8C9A1A4911DF00F0480D"
             BuildableName = "FirstProjectCardGame.app"
             BlueprintName = "FirstProjectCardGame"
-            ReferencedContainer = "container:FirstProjectCardGame.xcodeproj">
+            ReferencedContainer = "container:Matchismo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "F07B8C9A1A4911DF00F0480D"
             BuildableName = "FirstProjectCardGame.app"
             BlueprintName = "FirstProjectCardGame"
-            ReferencedContainer = "container:FirstProjectCardGame.xcodeproj">
+            ReferencedContainer = "container:Matchismo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -82,7 +82,7 @@
             BlueprintIdentifier = "F07B8C9A1A4911DF00F0480D"
             BuildableName = "FirstProjectCardGame.app"
             BlueprintName = "FirstProjectCardGame"
-            ReferencedContainer = "container:FirstProjectCardGame.xcodeproj">
+            ReferencedContainer = "container:Matchismo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

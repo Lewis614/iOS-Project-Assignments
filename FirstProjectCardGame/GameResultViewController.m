@@ -52,7 +52,7 @@
 
 //because the NSTimeInterval is double data type, use %g to stand.
 -(NSString *)stringFromResult:(GameResult *) result{
-    return [NSString stringWithFormat:@" Game Type: %@\n Final Score: %d\n Start Time: %@\n Time Used: %g sec\n -----------------\n",
+    return [NSString stringWithFormat:@" Game Type: %@\n Final Score: %d\n Finish Time: %@\n Time Used: %g sec\n -----------------\n",
             result.gameType,
             result.score,
             [NSDateFormatter localizedStringFromDate:result.endTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle],
@@ -83,6 +83,12 @@
 
 - (IBAction)sortByScore:(UIButton *)sender {
     self.results = [self.results sortedArrayUsingSelector:@selector(compareScore:)];
+    [self updateUI];
+}
+
+
+- (IBAction)resetHistory:(UIButton *)sender {
+    [GameResult reset];
     [self updateUI];
 }
 

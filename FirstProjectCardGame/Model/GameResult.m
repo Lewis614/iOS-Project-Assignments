@@ -65,6 +65,11 @@
     
 }
 
++(void)reset {
+    [[NSUserDefaults standardUserDefaults] setObject:[[NSMutableDictionary alloc]init] forKey:ALL_RESULTS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 //it is a dictionary as well.
 -(id) asPropertyList{
     return @{START_KEY : self.startTime, END_KEY : self.endTime, SCORE_KEY : @(self.score), GAME_KEY : self.gameType};

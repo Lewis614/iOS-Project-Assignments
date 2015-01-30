@@ -26,5 +26,5 @@
 
 //public utility method
 +(NSArray*) allGameResults;
-
++(void)reset;
 @end

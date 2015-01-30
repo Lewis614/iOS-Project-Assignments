@@ -56,7 +56,7 @@
 		F01562161A7AE510003ED49C /* GameSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSettingViewController.m; sourceTree = "<group>"; };
 		F01562181A7AE548003ED49C /* GameSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSetting.h; sourceTree = "<group>"; };
 		F01562191A7AE548003ED49C /* GameSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSetting.m; sourceTree = "<group>"; };
-		F07B8C9B1A4911DF00F0480D /* FirstProjectCardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstProjectCardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F07B8C9B1A4911DF00F0480D /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F07B8C9E1A4911DF00F0480D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F07B8CA01A4911DF00F0480D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F07B8CA21A4911DF00F0480D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -134,7 +134,7 @@
 		F07B8C9C1A4911DF00F0480D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F07B8C9B1A4911DF00F0480D /* FirstProjectCardGame.app */,
+				F07B8C9B1A4911DF00F0480D /* Matchismo.app */,
 				F07B8CBC1A4911E000F0480D /* FirstProjectCardGameTests.xctest */,
 			);
 			name = Products;
@@ -247,7 +247,7 @@
 			);
 			name = FirstProjectCardGame;
 			productName = FirstProjectCardGame;
-			productReference = F07B8C9B1A4911DF00F0480D /* FirstProjectCardGame.app */;
+			productReference = F07B8C9B1A4911DF00F0480D /* Matchismo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F07B8CBB1A4911E000F0480D /* FirstProjectCardGameTests */ = {
@@ -283,7 +283,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F07B8C961A4911DF00F0480D /* Build configuration list for PBXProject "FirstProjectCardGame" */;
+			buildConfigurationList = F07B8C961A4911DF00F0480D /* Build configuration list for PBXProject "Matchismo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -469,10 +469,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FirstProjectCardGame/FirstProjectCardGame-Prefix.pch";
 				INFOPLIST_FILE = "FirstProjectCardGame/FirstProjectCardGame-Info.plist";
-				PRODUCT_NAME = FirstProjectCardGame;
+				PRODUCT_NAME = Matchismo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -482,10 +483,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FirstProjectCardGame/FirstProjectCardGame-Prefix.pch";
 				INFOPLIST_FILE = "FirstProjectCardGame/FirstProjectCardGame-Info.plist";
-				PRODUCT_NAME = FirstProjectCardGame;
+				PRODUCT_NAME = Matchismo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -533,7 +535,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F07B8C961A4911DF00F0480D /* Build configuration list for PBXProject "FirstProjectCardGame" */ = {
+		F07B8C961A4911DF00F0480D /* Build configuration list for PBXProject "Matchismo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F07B8CCB1A4911E000F0480D /* Debug */,
