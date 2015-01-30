@@ -39,15 +39,18 @@
     self.scoreStatisticView.text = finalRes;
     
     //Doing Score sorted by ascend way, the best score is the last one.
-    NSArray * sortedSocres = [self.results sortedArrayUsingSelector:@selector(compareScore:)];
+    //NSArray * sortedSocres = [self.results sortedArrayUsingSelector:@selector(compareScore:)];
+    NSArray * sortedRes = [self.results sortedArrayUsingSelector:@selector(compareScore:)];
     //set the different color for different score.
-    [self changeScore:[sortedSocres firstObject] toColor:[UIColor redColor]];
-    [self changeScore:[sortedSocres lastObject] toColor:[UIColor greenColor]];
+    [self changeScore:[sortedRes firstObject] toColor:[UIColor redColor]];
+    [self changeScore:[sortedRes lastObject] toColor:[UIColor greenColor]];
     
     //Doing Time sorted by ascend way, the best score is the last one.
-    NSArray *sortedDuration = [self.results sortedArrayUsingSelector:@selector(compareDuration:)];
-    [self changeScore:[sortedDuration firstObject] toColor:[UIColor orangeColor]];
-    [self changeScore:[sortedDuration lastObject] toColor:[UIColor blueColor]];
+    //NSArray *sortedDuration = [self.results sortedArrayUsingSelector:@selector(compareDuration:)];
+
+    sortedRes = [self.results sortedArrayUsingSelector:@selector(compareDuration:)];
+    [self changeScore:[sortedRes firstObject] toColor:[UIColor orangeColor]];
+    [self changeScore:[sortedRes lastObject] toColor:[UIColor blueColor]];
 }
 
 //because the NSTimeInterval is double data type, use %g to stand.
@@ -89,6 +92,7 @@
 
 - (IBAction)resetHistory:(UIButton *)sender {
     [GameResult reset];
+    self.results = [GameResult allGameResults];
     [self updateUI];
 }
 

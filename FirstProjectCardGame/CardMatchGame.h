@@ -26,7 +26,7 @@
 
 @property (nonatomic,readonly) NSMutableArray *lastChosenCards;
 @property (nonatomic,readonly) NSInteger lastScore;
-
+@property (nonatomic, readonly) NSUInteger numberOfDealtCards;
 
 //game setting need these public property to send message to model.
 @property (nonatomic) NSInteger matchBonus;

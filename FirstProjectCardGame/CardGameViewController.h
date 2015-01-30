@@ -16,7 +16,10 @@
 @interface CardGameViewController : UIViewController
 //public for using
 
+@property (nonatomic) CGSize maxCardSize;
 
+//Used when instantiating the array lazily, and for instantiating the game property
+@property (nonatomic) NSUInteger numberOfStartingCards;
 
 
 @property (strong,nonatomic) CardMatchGame *game;
@@ -28,14 +31,12 @@
 @property(strong,nonatomic) GameResult *gameResult;
 
 
--(NSAttributedString *)titleForCard:(Card *)card;
--(UIImage *)backgroundImageForCard:(Card *)card;
 -(void) updateUI;
 -(void) updateUIDescription;
 
 
 //protected, for subclass to implement 
--(Deck *) createDeck;  //abstract
+-(Deck *) createDeck;  //abstract should be public
 
 @end
  

@@ -144,7 +144,9 @@ static const int COST_TO_CHOOSE = 1;
 }
 
 
-
+- (NSUInteger)numberOfDealtCards {
+    return [self.cards count];
+}
 
 
 @end
