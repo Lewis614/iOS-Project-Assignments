@@ -13,6 +13,9 @@
 
 @end
 
+
+
+
 @implementation HistoryDetailsViewController
 
 //When the array gets set and is on screen, or when the view appears on screen we will update the interface:

@@ -22,6 +22,8 @@
 
 -(NSComparisonResult) compareDuration:(GameResult *)result;
 
+-(NSComparisonResult) compareDate:(GameResult *)result;
+
 //public utility method
 +(NSArray*) allGameResults;
 

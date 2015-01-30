@@ -45,10 +45,11 @@
                 self = nil;
                 break;
             }
-            
-            
-            
         }
+        //dafault setting on card match.
+        _matchBonus = MATH_BONUS;
+        _mismatchPenalty = MISMATCH_PENALTY;
+        _flipCost = COST_TO_CHOOSE;
     }
     return self;
 }
@@ -101,14 +102,14 @@ static const int COST_TO_CHOOSE = 1;
                 if([otherCards count]+1 == self.maxMatchingCards){
                     int matchScore = [card match:otherCards]; //use array because match can do multiple cards
                     if(matchScore) {
-                        self.lastScore= matchScore * MATH_BONUS;
+                        self.lastScore= matchScore * self.matchBonus;
                         card.matched = YES;
                         for(Card *otherCard in otherCards) {
                             otherCard.matched = YES;
                         }
                     } else {
                         //Mismatch,set it as a constant
-                        self.lastScore = -MISMATCH_PENALTY;
+                        self.lastScore = -self.mismatchPenalty;
                         for(Card *otherCard in otherCards){
                             otherCard.chosen = NO;
                         }
@@ -121,7 +122,7 @@ static const int COST_TO_CHOOSE = 1;
                     break;
                 }
             }
-            self.score += (self.lastScore - COST_TO_CHOOSE);
+            self.score += (self.lastScore - self.flipCost);
             card.chosen = YES;
             //if(self.lastScore<0) card.chosen = NO;
             //else card.chosen = YES;

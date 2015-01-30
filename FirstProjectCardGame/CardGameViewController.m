@@ -10,14 +10,10 @@
 #import "Deck.h"
 #import "Card.h"
 #import "HistoryDetailsViewController.h"
-
+#import "GameSetting.h"
 
 @interface CardGameViewController ()
 
-@property (strong,nonatomic) Deck *deck;
-
-
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 
 //BUT Not required to make a superclass’s outlets and actions public (by putting them in its header file)
 @property (weak, nonatomic) IBOutlet UITextField *explainTextLabel;
@@ -27,17 +23,34 @@
 
 @property (weak, nonatomic) IBOutlet UISlider *historySlider;
 
+//----------------
+@property (strong,nonatomic) Deck *deck;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (strong,nonatomic) GameSetting* gameSetting;
+
+
 @end
 
 @implementation CardGameViewController
 
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.game.matchBonus = self.gameSetting.matchBonus;
+    self.game.mismatchPenalty = self.gameSetting.mismatchPenalty;
+    self.game.flipCost = self.gameSetting.flipCost;
+}
+
 
 -(CardMatchGame *) game {
     if(!_game){
-        _game = [[CardMatchGame alloc] initWithCount:[self.cardButtons count]
-                                           usingDeck:[self createDeck]];
+        _game = [[CardMatchGame alloc] initWithCount:[self.cardButtons count] usingDeck:[self createDeck]];
         [self touchSegmentControl:self.modeSelector];
+        
+        _game.matchBonus = self.gameSetting.matchBonus;
+        _game.mismatchPenalty = self.gameSetting.mismatchPenalty;
+        _game.flipCost = self.gameSetting.flipCost;
     }
     return _game;
     
@@ -214,7 +227,7 @@
 
 //=======HW3 Extra Task2=========
 
-//property of itself.lazy instanation
+//property of GameResult and GameSettings.lazy instanation
 - (GameResult *)gameResult {
     if(!_gameResult) {
         _gameResult = [[GameResult alloc]init];
@@ -223,5 +236,11 @@
     return _gameResult;
 }
 
+
+- (GameSetting *)gameSetting
+{
+    if (!_gameSetting) _gameSetting = [[GameSetting alloc] init];
+    return _gameSetting;
+}
 
 @end

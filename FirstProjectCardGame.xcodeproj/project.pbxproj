@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F01562111A7A8B04003ED49C /* GameResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F01562101A7A8B04003ED49C /* GameResult.m */; };
 		F01562141A7AA99F003ED49C /* GameResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F01562131A7AA99F003ED49C /* GameResultViewController.m */; };
+		F01562171A7AE510003ED49C /* GameSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F01562161A7AE510003ED49C /* GameSettingViewController.m */; };
+		F015621A1A7AE548003ED49C /* GameSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = F01562191A7AE548003ED49C /* GameSetting.m */; };
 		F07B8C9F1A4911DF00F0480D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07B8C9E1A4911DF00F0480D /* Foundation.framework */; };
 		F07B8CA11A4911DF00F0480D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07B8CA01A4911DF00F0480D /* CoreGraphics.framework */; };
 		F07B8CA31A4911DF00F0480D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07B8CA21A4911DF00F0480D /* UIKit.framework */; };
@@ -50,6 +52,10 @@
 		F01562101A7A8B04003ED49C /* GameResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameResult.m; path = Model/GameResult.m; sourceTree = "<group>"; };
 		F01562121A7AA99F003ED49C /* GameResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameResultViewController.h; sourceTree = "<group>"; };
 		F01562131A7AA99F003ED49C /* GameResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameResultViewController.m; sourceTree = "<group>"; };
+		F01562151A7AE50F003ED49C /* GameSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSettingViewController.h; sourceTree = "<group>"; };
+		F01562161A7AE510003ED49C /* GameSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSettingViewController.m; sourceTree = "<group>"; };
+		F01562181A7AE548003ED49C /* GameSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSetting.h; sourceTree = "<group>"; };
+		F01562191A7AE548003ED49C /* GameSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSetting.m; sourceTree = "<group>"; };
 		F07B8C9B1A4911DF00F0480D /* FirstProjectCardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstProjectCardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F07B8C9E1A4911DF00F0480D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F07B8CA01A4911DF00F0480D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -149,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				F07B8CB01A4911DF00F0480D /* Main.storyboard */,
+				F01562151A7AE50F003ED49C /* GameSettingViewController.h */,
+				F01562161A7AE510003ED49C /* GameSettingViewController.m */,
 				F01562121A7AA99F003ED49C /* GameResultViewController.h */,
 				F01562131A7AA99F003ED49C /* GameResultViewController.m */,
 				F0EB0CC61A7986FD00D1FE5E /* HistoryDetailsViewController.h */,
@@ -216,6 +224,8 @@
 				F0EB0CC41A77451600D1FE5E /* SetCardDeck.m */,
 				F015620F1A7A8B04003ED49C /* GameResult.h */,
 				F01562101A7A8B04003ED49C /* GameResult.m */,
+				F01562181A7AE548003ED49C /* GameSetting.h */,
+				F01562191A7AE548003ED49C /* GameSetting.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -327,10 +337,12 @@
 				F07B8CB51A4911DF00F0480D /* CardGameViewController.m in Sources */,
 				F0EB0CC81A7986FD00D1FE5E /* HistoryDetailsViewController.m in Sources */,
 				F0EB0CC21A7744F300D1FE5E /* SetCard.m in Sources */,
+				F015621A1A7AE548003ED49C /* GameSetting.m in Sources */,
 				F0B2F6031A535EEB007EC891 /* PlayingCardDeck.m in Sources */,
 				F07B8CAB1A4911DF00F0480D /* main.m in Sources */,
 				F0B2F5F61A50CDDF007EC891 /* Card.m in Sources */,
 				F0EB0CC51A77451600D1FE5E /* SetCardDeck.m in Sources */,
+				F01562171A7AE510003ED49C /* GameSettingViewController.m in Sources */,
 				F08FD2441A5DDA85008CED49 /* PlayingCardGameViewController.m in Sources */,
 				F0EB0CBF1A77146600D1FE5E /* SetCardGameViewController.m in Sources */,
 			);

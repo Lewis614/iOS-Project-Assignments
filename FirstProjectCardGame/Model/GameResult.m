@@ -98,7 +98,7 @@
     return self;
 }
 
-//Sorting helper method
+//Sorting helper method(using in the @selector(XXXX))
 -(NSComparisonResult) compareDuration:(GameResult *)result{
     return[@(self.duration) compare:[[NSNumber alloc]initWithDouble:result.duration]];
 }
@@ -107,6 +107,9 @@
     return [@(self.score) compare:@(result.score)];
 }
 
+-(NSComparisonResult) compareDate:(GameResult *)result{
+    return [self.endTime compare: result.endTime];
+}
 
 
 

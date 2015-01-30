@@ -28,6 +28,11 @@
 @property (nonatomic,readonly) NSInteger lastScore;
 
 
+//game setting need these public property to send message to model.
+@property (nonatomic) NSInteger matchBonus;
+@property (nonatomic) NSInteger mismatchPenalty;
+@property (nonatomic) NSInteger flipCost;
+
 
 
 

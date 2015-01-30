@@ -18,8 +18,11 @@
 
 @end
 
-@implementation GameResultViewController
 
+
+
+
+@implementation GameResultViewController
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -42,9 +45,9 @@
     [self changeScore:[sortedSocres lastObject] toColor:[UIColor greenColor]];
     
     //Doing Time sorted by ascend way, the best score is the last one.
-    NSArray *sortedTimes = [self.results sortedArrayUsingSelector:@selector(compareDuration:)];
-    [self changeScore:[sortedTimes firstObject] toColor:[UIColor orangeColor]];
-    [self changeScore:[sortedTimes lastObject] toColor:[UIColor blueColor]];
+    NSArray *sortedDuration = [self.results sortedArrayUsingSelector:@selector(compareDuration:)];
+    [self changeScore:[sortedDuration firstObject] toColor:[UIColor orangeColor]];
+    [self changeScore:[sortedDuration lastObject] toColor:[UIColor blueColor]];
 }
 
 //because the NSTimeInterval is double data type, use %g to stand.
@@ -63,4 +66,27 @@
     //textStorage is kind  of a place where the text store its settings.
     [self.scoreStatisticView.textStorage addAttribute:NSForegroundColorAttributeName value:color range:range];
 }
+
+- (IBAction)sortByDuration:(UIButton *)sender {
+    self.results = [self.results sortedArrayUsingSelector:@selector(compareDuration:)];
+    [self updateUI];
+}
+
+
+
+- (IBAction)sortByDate:(UIButton *)sender {
+    self.results = [self.results sortedArrayUsingSelector:@selector(compareDate:)];
+    [self updateUI];
+
+}
+
+
+- (IBAction)sortByScore:(UIButton *)sender {
+    self.results = [self.results sortedArrayUsingSelector:@selector(compareScore:)];
+    [self updateUI];
+}
+
+
+
+
 @end
