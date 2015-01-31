@@ -18,6 +18,7 @@
 @interface SetCardGameViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *setCardexplainTextLabel;
 
+
 @end
 
 @implementation SetCardGameViewController

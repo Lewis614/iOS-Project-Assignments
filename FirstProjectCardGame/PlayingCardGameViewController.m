@@ -29,7 +29,7 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    self.numberOfStartingCards = 40;
+    self.numberOfStartingCards = 35;
     self.maxCardSize = CGSizeMake(80.0, 120.0);
     [self updateUI];
 

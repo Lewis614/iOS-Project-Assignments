@@ -58,7 +58,7 @@
     return [NSString stringWithFormat:@" Game Type: %@\n Final Score: %d\n Finish Time: %@\n Time Used: %g sec\n -----------------\n",
             result.gameType,
             result.score,
-            [NSDateFormatter localizedStringFromDate:result.endTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle],
+            [NSDateFormatter localizedStringFromDate:result.endTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterMediumStyle],
             //c function?
             round(result.duration)];
 }

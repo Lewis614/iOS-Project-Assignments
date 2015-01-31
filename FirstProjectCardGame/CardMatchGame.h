@@ -13,12 +13,6 @@
 
 @interface CardMatchGame : NSObject
 
-//designated initializer, same function like init.
--(instancetype)initWithCount:(NSUInteger) count usingDeck:(Deck *)deck;
-
--(void) chooseCardAtIndex: (NSUInteger) index;
-
--(Card *) cardAtIndex : (NSUInteger) index;
 
 //read only because I am the game logic, I decide the how many score, no public setter.
 @property (nonatomic,readonly) NSInteger score;
@@ -33,7 +27,20 @@
 @property (nonatomic) NSInteger mismatchPenalty;
 @property (nonatomic) NSInteger flipCost;
 
+@property (nonatomic, readonly) BOOL deckIsEmpty;
 
 
+
+
+
+
+//designated initializer, same function like init.
+-(instancetype)initWithCount:(NSUInteger) count usingDeck:(Deck *)deck;
+
+-(void) chooseCardAtIndex: (NSUInteger) index;
+
+-(Card *) cardAtIndex : (NSUInteger) index;
+
+- (void)drawNewCard;
 
 @end

@@ -17,7 +17,7 @@
 @property (nonatomic,readwrite) NSMutableArray *lastChosenCards;
 @property (nonatomic,readwrite) NSInteger lastScore;
 
-
+@property (strong, nonatomic) Deck *deck;
 
 @end
 
@@ -35,6 +35,10 @@
 -(instancetype) initWithCount:(NSUInteger)count usingDeck:(Deck *)deck{
     self = [super init];
     if(self){
+        
+        //It also needs to store the deck (which was discarded previously after the initialization)
+        _deck = deck;
+        
         for(int i = 0; i < count; i++){
             Card *card = [deck drawRandomCard];
             if(card){
@@ -46,6 +50,8 @@
                 break;
             }
         }
+        
+        
         //dafault setting on card match.
         _matchBonus = MATH_BONUS;
         _mismatchPenalty = MISMATCH_PENALTY;
@@ -147,6 +153,28 @@ static const int COST_TO_CHOOSE = 1;
 - (NSUInteger)numberOfDealtCards {
     return [self.cards count];
 }
+
+//getter of the boolean value
+- (BOOL)deckIsEmpty
+{
+    Card *card = [self.deck drawRandomCard];
+    if (card) {
+        [self.deck addCard:card];
+        return NO;
+    }
+    return YES;
+}
+
+
+- (void)drawNewCard
+{
+    Card *card = [self.deck drawRandomCard];
+    if (card) {
+        [self.cards addObject:card];
+    }
+}
+
+
 
 
 @end

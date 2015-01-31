@@ -372,14 +372,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnz-hB-Yj4">
-                                <rect key="frame" x="81" y="476" width="87" height="21"/>
+                                <rect key="frame" x="39" y="476" width="87" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btH-mY-KVv">
-                                <rect key="frame" x="176" y="473" width="58" height="28"/>
+                                <rect key="frame" x="227" y="473" width="58" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Restart" backgroundImage="cardFront">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -398,6 +398,16 @@
                                 <rect key="frame" x="0.0" y="65" width="320" height="357"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlM-Ml-lCz">
+                                <rect key="frame" x="161" y="473" width="58" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add" backgroundImage="cardFront">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchAddCardsButton:" destination="6Mi-nA-yuQ" eventType="touchUpInside" id="FJA-2X-Tlh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -410,6 +420,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addCardsButton" destination="nlM-Ml-lCz" id="Bv7-qF-peM"/>
                         <outlet property="gridView" destination="LfM-3C-AO8" id="3DW-c1-y9y"/>
                         <outlet property="restartButton" destination="btH-mY-KVv" id="6Q9-rJ-1zw"/>
                         <outlet property="scoreLabel" destination="Mnz-hB-Yj4" id="0ed-gY-4Eo"/>
@@ -466,6 +477,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Suz-Sw-L0T"/>
+        <segue reference="eFh-bV-IPc"/>
     </inferredMetricsTieBreakers>
 </document>

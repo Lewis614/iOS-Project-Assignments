@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSelector;
 @property (weak, nonatomic) IBOutlet UIView *gridView;
 @property (weak, nonatomic) IBOutlet UISlider *historySlider;
+@property (weak, nonatomic) IBOutlet UIButton *addCardsButton;
 
 //----------------
 @property (strong,nonatomic) Deck *deck;
@@ -99,13 +100,28 @@
 
 - (IBAction)touchRestartButton:(UIButton *)sender {
     //clear all the setting and use lazy initialzation in updateUI to recreate them.
+
+    //When dealing a new deck, make sure there is no old card view on screen, reset the card array, the grid and the add-cards button
+    for (UIView *subView in self.cardViews) {
+        [subView removeFromSuperview];
+    }
+    
     self.game = nil;
     self.cardViews = nil;
+    self.grid = nil;
     self.flipHistory = nil;
     self.gameResult = nil;
     
+
+    self.addCardsButton.enabled = YES;
+    self.addCardsButton.alpha = 1.0;
+    
     //reset the slider range.
     [self resetSliderRange:0];
+    
+    
+    
+    
     //Do not need [self game]before updateUI, since if meet game == nil it will lazy initialization again.
     [self updateUI];
     self.explainTextLabel.text =@"";
@@ -137,12 +153,24 @@
     
 }
 
+#define ADD_CARD_NUM 3
+- (IBAction)touchAddCardsButton:(UIButton *)sender {
+    // add there cards there
+    for (int i = 0; i < ADD_CARD_NUM; i++) {
+        [self.game drawNewCard];
+    }
+    if (self.game.deckIsEmpty) {
+        sender.enabled = NO;
+        sender.alpha = 0.5;
+    }
+    [self updateUI];
+}
+
+
 #define CARDSPACINGINPERCENT 0.08
 
 -(void) updateUI {
-    for (NSUInteger cardIndex = 0;
-         cardIndex < self.game.numberOfDealtCards;
-         cardIndex++) {
+    for (NSUInteger cardIndex = 0; cardIndex < self.game.numberOfDealtCards; cardIndex++) {
         Card *card = [self.game cardAtIndex:cardIndex];
         NSUInteger viewIndex = [self.cardViews indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
             if ([obj isKindOfClass:[UIView class]]) {
@@ -152,17 +180,26 @@
         }];
         UIView *cardView;
         if (viewIndex == NSNotFound) {
-            cardView = [self createViewForCard:card];
-            cardView.tag = cardIndex;
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                  action:@selector(touchCard:)];
-            [cardView addGestureRecognizer:tap];
-            [self.cardViews addObject:cardView];
-            viewIndex = [self.cardViews indexOfObject:cardView];
-            [self.gridView addSubview:cardView];
+            if(!card.matched){
+                cardView = [self createViewForCard:card];
+                cardView.tag = cardIndex;
+                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchCard:)];
+                [cardView addGestureRecognizer:tap];
+                [self.cardViews addObject:cardView];
+                viewIndex = [self.cardViews indexOfObject:cardView];
+                [self.gridView addSubview:cardView];
+            }
+            
         } else {
             cardView = self.cardViews[viewIndex];
-            [self updateView:cardView forCard:card];
+            if(!card.matched){
+                [self updateView:cardView forCard:card];
+            } else {
+                //### if the view is matched, remove it from the top view.
+                [cardView removeFromSuperview];
+                [self updateView:cardView forCard:card];
+            }
+            
             cardView.alpha = card.matched ? 0.6 : 1.0;
         }
         CGRect frame = [self.grid frameOfCellAtRow:viewIndex / self.grid.columnCount
@@ -170,6 +207,19 @@
         frame = CGRectInset(frame, frame.size.width * CARDSPACINGINPERCENT, frame.size.height * CARDSPACINGINPERCENT);
         cardView.frame = frame;
     }
+    
+    
+    //When updating the user interface move the grid calculations to a loop of its own after you reset the grid to a possible new card count
+    self.grid.minimumNumberOfCells = [self.cardViews count];
+    for (NSUInteger viewIndex = 0; viewIndex < [self.cardViews count]; viewIndex++) {
+        CGRect frame = [self.grid frameOfCellAtRow:viewIndex / self.grid.columnCount
+                                          inColumn:viewIndex % self.grid.columnCount];
+        frame = CGRectInset(frame, frame.size.width * CARDSPACINGINPERCENT, frame.size.height * CARDSPACINGINPERCENT);
+        ((UIView *)self.cardViews[viewIndex]).frame = frame;
+    }
+    
+    
+    
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     //Change the score of the game results when the user interface gets updated
     self.gameResult.score = self.game.score;

@@ -65,13 +65,12 @@
 }
 
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-#define CORNER_RADIUS 12.0
+// When adding lots of new cards, the cards get smaller and smaller which uncovered a problem with a fixed border radios of the set cards, which can easily be adjusted to be relative to the actual card size
+#define CORNER_RADIUS_RATIO_WITH_BORDER 0.1
 - (void)drawRect:(CGRect)rect
 {
     UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds
-                                                           cornerRadius:CORNER_RADIUS];
+                                cornerRadius:self.bounds.size.width * CORNER_RADIUS_RATIO_WITH_BORDER];
     [roundedRect addClip];
     [[UIColor whiteColor] setFill];
     UIRectFill(self.bounds);
