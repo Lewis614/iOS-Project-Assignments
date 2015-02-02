@@ -19,7 +19,7 @@
 
 
 @property (nonatomic) NSInteger numberOfInitialSettingOfMatchingCard;
--(int)match:(NSArray *)otherCards;
+-(NSInteger)match:(NSArray *)otherCards;
 
 @end
 

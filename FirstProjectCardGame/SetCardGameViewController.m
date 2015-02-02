@@ -104,14 +104,14 @@
         }
         
         if(self.game.lastScore > 0){
-            NSString *matchPart = [NSString stringWithFormat:@"Matched! Get %d points!", self.game.lastScore];
+            NSString *matchPart = [NSString stringWithFormat:@"Matched! Get %ld points!", self.game.lastScore];
             NSInteger loc =description.length;
             [description appendAttributedString:[[NSAttributedString alloc]initWithString:matchPart]];
             [description replaceCharactersInRange:NSMakeRange(loc, matchPart.length) withString:matchPart];
         }
         
         else if(self.game.lastScore < 0){
-            NSString *dismatchPart = [NSString stringWithFormat:@" Don't match! %d points penalty!", -self.game.lastScore];
+            NSString *dismatchPart = [NSString stringWithFormat:@" Don't match! %ld points penalty!", -self.game.lastScore];
             
             NSInteger loc =description.length;
             [description appendAttributedString:[[NSAttributedString alloc]initWithString:dismatchPart]];

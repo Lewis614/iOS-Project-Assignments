@@ -73,12 +73,12 @@
 
 //later update
 -(NSString *) contents {
-    return [NSString stringWithFormat:@"%@,%@,%@,%d",self.symbol,self.shading,self.color, self.number];
+    return [NSString stringWithFormat:@"%@,%@,%@,%ld",self.symbol,self.shading,self.color, self.number];
 }
 
--(int)match:(NSArray *)otherCards {
+-(NSInteger)match:(NSArray *)otherCards {
     
-    int score = 0;
+    NSInteger score = 0;
     
     if([otherCards count] == self.numberOfInitialSettingOfMatchingCard-1){
         NSMutableArray *colors = [[NSMutableArray alloc]init];
@@ -89,7 +89,7 @@
         [colors addObject:self.color];
         [symbols addObject:self.symbol];
         [shadings addObject:self.shading];
-        [numbers addObject:[NSNumber numberWithInt:self.number]];
+        [numbers addObject:[NSNumber numberWithInteger:self.number]];
         
         // kind of a introspection:id because you have to iterate different kind of card
         for(id otherCard in otherCards){
@@ -98,7 +98,7 @@
                 if(![colors containsObject:otherSetCard.color]) [colors addObject:otherSetCard.color];
                 if(![symbols containsObject:otherSetCard.symbol]) [symbols addObject:otherSetCard.symbol];
                 if(![shadings containsObject:otherSetCard.shading]) [shadings addObject:otherSetCard.shading];
-                if(![numbers containsObject:[NSNumber numberWithInt:otherSetCard.number]]) [numbers addObject: [NSNumber numberWithInt:otherSetCard.number]];
+                if(![numbers containsObject:[NSNumber numberWithInteger:otherSetCard.number]]) [numbers addObject: [NSNumber numberWithInteger:otherSetCard.number]];
                 
             }
         }

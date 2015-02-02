@@ -55,7 +55,7 @@
 
 //because the NSTimeInterval is double data type, use %g to stand.
 -(NSString *)stringFromResult:(GameResult *) result{
-    return [NSString stringWithFormat:@" Game Type: %@\n Final Score: %d\n Finish Time: %@\n Time Used: %g sec\n -----------------\n",
+    return [NSString stringWithFormat:@" Game Type: %@\n Final Score: %ld\n Finish Time: %@\n Time Used: %g sec\n -----------------\n",
             result.gameType,
             result.score,
             [NSDateFormatter localizedStringFromDate:result.endTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterMediumStyle],

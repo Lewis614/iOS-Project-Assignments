@@ -19,17 +19,17 @@
 
 
 //properties getters
-- (int)matchBonus
+- (NSInteger)matchBonus
 {
     return [self intValueForKey:MATCHBONUS_KEY withDefault:4];
 }
 
-- (int)mismatchPenalty
+- (NSInteger)mismatchPenalty
 {
     return [self intValueForKey:MISMATCHPENALTY_KEY withDefault:2];
 }
 
-- (int)flipCost
+- (NSInteger)flipCost
 {
     return [self intValueForKey:FLIPCOST_KEY withDefault:1];
 }
@@ -46,23 +46,23 @@
 
 
 //properties setters
-- (void)setMatchBonus:(int)matchBonus
+- (void)setMatchBonus:(NSInteger)matchBonus
 {
     [self setIntValue:matchBonus forKey:MATCHBONUS_KEY];
 }
 
-- (void)setMismatchPenalty:(int)mismatchPenalty
+- (void)setMismatchPenalty:(NSInteger)mismatchPenalty
 {
     [self setIntValue:mismatchPenalty forKey:MISMATCHPENALTY_KEY];
 }
 
-- (void)setFlipCost:(int)flipCost
+- (void)setFlipCost:(NSInteger)flipCost
 {
     [self setIntValue:flipCost forKey:FLIPCOST_KEY];
 }
 
 //setter helper method to save their values to the user defaults
-- (void)setIntValue:(int)value forKey:(NSString *)key
+- (void)setIntValue:(NSInteger)value forKey:(NSString *)key
 {
     NSMutableDictionary *settings = [[[NSUserDefaults standardUserDefaults]
                                       dictionaryForKey:GAME_SETTINGS_KEY] mutableCopy];

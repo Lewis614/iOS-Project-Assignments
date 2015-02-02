@@ -67,11 +67,11 @@
 //helper method to set the discrete value
 - (void)setLabel:(UILabel *)label forSlider:(UISlider *)slider
 {
-    int sliderValue;
+    NSInteger sliderValue;
     //4 she 5 ru, very typical implementation, please remember it well!
     sliderValue = lroundf(slider.value);
     [slider setValue:sliderValue animated:NO];
-    label.text = [NSString stringWithFormat:@"%d", sliderValue];
+    label.text = [NSString stringWithFormat:@"%ld", sliderValue];
 }
 
 @end

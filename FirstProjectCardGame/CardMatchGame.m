@@ -106,7 +106,7 @@ static const int COST_TO_CHOOSE = 1;
                 self.lastScore = 0;
                 // otherCards + card itself.
                 if([otherCards count]+1 == self.maxMatchingCards){
-                    int matchScore = [card match:otherCards]; //use array because match can do multiple cards
+                    NSInteger matchScore = [card match:otherCards]; //use array because match can do multiple cards
                     if(matchScore) {
                         self.lastScore= matchScore * self.matchBonus;
                         card.matched = YES;

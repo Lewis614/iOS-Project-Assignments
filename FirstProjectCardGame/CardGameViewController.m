@@ -276,7 +276,7 @@
     
     
     
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
     //Change the score of the game results when the user interface gets updated
     self.gameResult.score = self.game.score;
     
@@ -322,9 +322,9 @@
             }
             description = [cardContents componentsJoinedByString:@" "];
         }
-        if(self.game.lastScore > 0) description = [NSString stringWithFormat:@"Matched! %@ for %d points!", description, self.game.lastScore];
+        if(self.game.lastScore > 0) description = [NSString stringWithFormat:@"Matched! %@ for %ld points!", description, self.game.lastScore];
         else if(self.game.lastScore < 0) {
-            description = [NSString stringWithFormat:@"%@ don't match! %d points penalty!", description, -self.game.lastScore];
+            description = [NSString stringWithFormat:@"%@ don't match! %ld points penalty!", description, -self.game.lastScore];
         }
         
         self.explainTextLabel.text = description;

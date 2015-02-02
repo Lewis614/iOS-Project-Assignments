@@ -13,10 +13,10 @@
 
 
 //override the match function from superclass.
--(int) match:(NSArray *)otherCards {
-    int score = 0;
+-(NSInteger) match:(NSArray *)otherCards {
+    NSInteger score = 0;
     
-    int numOtherCards = [otherCards count];
+    NSInteger numOtherCards = [otherCards count];
     if(numOtherCards) {
         
         //if index = 0 array is empty, it will crush. array index out of bound
