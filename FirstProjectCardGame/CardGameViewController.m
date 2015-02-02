@@ -31,6 +31,10 @@
 @property (strong, nonatomic) NSMutableArray *cardViews;
 @property (strong, nonatomic) Grid *grid;
 
+
+@property (strong, nonatomic) UIDynamicAnimator *pileAnimator;
+
+
 @end
 
 @implementation CardGameViewController
@@ -124,7 +128,7 @@
     self.grid = nil;
     self.flipHistory = nil;
     self.gameResult = nil;
-    
+    self.pileAnimator = nil;
 
     self.addCardsButton.enabled = YES;
     self.addCardsButton.alpha = 1.0;
@@ -176,6 +180,8 @@
         sender.enabled = NO;
         sender.alpha = 0.5;
     }
+    
+    self.pileAnimator = nil;
     [self updateUI];
 }
 
@@ -376,15 +382,81 @@
 - (void)touchCard:(UITapGestureRecognizer *)gesture
 {
     if (gesture.state == UIGestureRecognizerStateEnded) {
-        [self.game chooseCardAtIndex:gesture.view.tag];
-        [self updateUI];
+        Card *card = [self.game cardAtIndex:gesture.view.tag];
+        if(!card.matched && !self.pileAnimator) {
+            [self.game chooseCardAtIndex:gesture.view.tag];
+            [self updateUI];
+        }
+        else if(self.pileAnimator) {
+            self.pileAnimator = nil;
+            [self updateUI];
+        }
+        
     }
 }
 
 //After a rotation resize the grid and update the user interface:
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
     self.grid.size = self.gridView.bounds.size;
+    self.pileAnimator = nil;
     [self updateUI];
+}
+
+
+//Panning should only be possible, when there is a pile (or at least the animation to generate a pile is active). When panning starts, add an attachment behavior to all cards – connected to the point of touch – and stop currently active snapping by removing the snap behavior for the cards. During panning just adjust the anchor point to the current point of touch. At the end remove the attachment behavior and reset the snapping behaviour
+
+
+- (IBAction)panPile:(UIPanGestureRecognizer *)sender {
+    if (self.pileAnimator) {
+        CGPoint gesturePoint = [sender locationInView:self.gridView];
+        if (sender.state == UIGestureRecognizerStateBegan) {
+            for (UIView *cardView in self.cardViews) {
+                UIAttachmentBehavior *attachment = [[UIAttachmentBehavior alloc] initWithItem:cardView attachedToAnchor:gesturePoint];
+                [self.pileAnimator addBehavior:attachment];
+            }
+            for (UIDynamicBehavior *behaviour in self.pileAnimator.behaviors) {
+                if ([behaviour isKindOfClass:[UISnapBehavior class]]) {
+                    [self.pileAnimator removeBehavior:behaviour];
+                }
+            }
+        } else if (sender.state == UIGestureRecognizerStateChanged) {
+            for (UIDynamicBehavior *behaviour in self.pileAnimator.behaviors) {
+                if ([behaviour isKindOfClass:[UIAttachmentBehavior class]]) {
+                    ((UIAttachmentBehavior *)behaviour).anchorPoint = gesturePoint;
+                }
+            }
+        } else if (sender.state == UIGestureRecognizerStateEnded) {
+            for (UIDynamicBehavior *behaviour in self.pileAnimator.behaviors) {
+                if ([behaviour isKindOfClass:[UIAttachmentBehavior class]]) {
+                    [self.pileAnimator removeBehavior:behaviour];
+                }
+            }
+            for (UIView *cardView in self.cardViews) {
+                UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:cardView snapToPoint:gesturePoint];
+                [self.pileAnimator addBehavior:snap];
+            }
+        }
+    }
+}
+
+//After a pinch, and when there is no current active animation create a new animator, loop over all cards and add a snap behavior for each of them – snapping to the center of the pinch gesture. Because the snap behavior is quite fast, add an additional dynamic-item behavior, and set the resistance to slow snapping down:
+
+#define RESISTANCE_TO_PILING 40.0
+- (IBAction)gatherCardsIntoPile:(UIPinchGestureRecognizer *)sender {
+    if ((sender.state == UIGestureRecognizerStateChanged) ||
+        (sender.state == UIGestureRecognizerStateEnded)) {
+        if (!self.pileAnimator) {
+            CGPoint center = [sender locationInView:self.gridView];
+            self.pileAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.gridView];
+            UIDynamicItemBehavior *item = [[UIDynamicItemBehavior alloc] initWithItems:self.cardViews];
+            item.resistance = RESISTANCE_TO_PILING;
+            [self.pileAnimator addBehavior:item];
+            for (UIView *cardView in self.cardViews) {
+                UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:cardView snapToPoint:center];
+                [self.pileAnimator addBehavior:snap];
+            }
+        }
+    }
 }
 
 

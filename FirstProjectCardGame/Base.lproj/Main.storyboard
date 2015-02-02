@@ -178,8 +178,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAC-CG-Nd6">
-                                <rect key="frame" x="0.0" y="93" width="320" height="299"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAC-CG-Nd6">
+                                <rect key="frame" x="0.0" y="93" width="320" height="348"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -258,6 +258,7 @@
                                 <rect key="frame" x="240" y="477" width="60" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Reset ">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -401,6 +402,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGZ-sc-jMd">
                                 <rect key="frame" x="0.0" y="64" width="320" height="318"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="AGi-DE-cAR" appends="YES" id="L8e-7Q-MWp"/>
+                                    <outletCollection property="gestureRecognizers" destination="gaK-G1-0Vs" appends="YES" id="9YR-wM-wyJ"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -446,6 +452,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="AGi-DE-cAR">
+                    <connections>
+                        <action selector="panPile:" destination="vXZ-lx-hvc" id="sZu-Ef-VcZ"/>
+                    </connections>
+                </panGestureRecognizer>
+                <pinchGestureRecognizer id="gaK-G1-0Vs">
+                    <connections>
+                        <action selector="gatherCardsIntoPile:" destination="vXZ-lx-hvc" id="mAh-Or-E6b"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="442" y="-623"/>
         </scene>
@@ -503,6 +519,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfM-3C-AO8">
                                 <rect key="frame" x="0.0" y="65" width="320" height="357"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="5Uw-ZP-5NH" appends="YES" id="hRx-c0-TX5"/>
+                                    <outletCollection property="gestureRecognizers" destination="kLY-eH-c4j" appends="YES" id="JzZ-os-OSs"/>
+                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlM-Ml-lCz">
                                 <rect key="frame" x="174" y="473" width="58" height="28"/>
@@ -557,6 +578,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eun-Af-ycO" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="5Uw-ZP-5NH">
+                    <connections>
+                        <action selector="panPile:" destination="6Mi-nA-yuQ" id="HGI-ru-Agl"/>
+                    </connections>
+                </panGestureRecognizer>
+                <pinchGestureRecognizer id="kLY-eH-c4j">
+                    <connections>
+                        <action selector="gatherCardsIntoPile:" destination="6Mi-nA-yuQ" id="FC3-jb-CVa"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="442" y="92"/>
         </scene>
@@ -612,6 +643,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Suz-Sw-L0T"/>
+        <segue reference="eFh-bV-IPc"/>
     </inferredMetricsTieBreakers>
 </document>
