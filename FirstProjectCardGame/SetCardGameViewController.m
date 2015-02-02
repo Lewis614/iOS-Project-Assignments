@@ -80,11 +80,11 @@
     
 }
 
+//update UI is still using the super class method, but here just implement the difference on description detail.
 
 -(void) updateUIDescription{
     if(self.game) {
         NSAttributedString * description =[self demoDescriptionWithAttributedString];
-        self.setCardexplainTextLabel.attributedText =description;
         
         if(![description isEqualToAttributedString:[[NSAttributedString alloc]initWithString:@""]] && ![self.flipHistory.lastObject isEqualToAttributedString:description]){
             [self.flipHistory addObject:description];
@@ -96,6 +96,7 @@
 
 -(NSAttributedString *) demoDescriptionWithAttributedString{
     NSMutableAttributedString *description = [[NSMutableAttributedString alloc]init];
+    self.setCardexplainTextLabel.text = @"";
     if([self.game.lastChosenCards count]){
         for(Card *card in self.game.lastChosenCards) {
             
@@ -108,14 +109,18 @@
             NSInteger loc =description.length;
             [description appendAttributedString:[[NSAttributedString alloc]initWithString:matchPart]];
             [description replaceCharactersInRange:NSMakeRange(loc, matchPart.length) withString:matchPart];
+            
+            self.setCardexplainTextLabel.Text =matchPart;
         }
         
         else if(self.game.lastScore < 0){
-            NSString *dismatchPart = [NSString stringWithFormat:@" Don't match! %ld points penalty!", -self.game.lastScore];
+            NSString *dismatchPart = [NSString stringWithFormat:@"Don't match! %ld points penalty!", -self.game.lastScore];
             
             NSInteger loc =description.length;
             [description appendAttributedString:[[NSAttributedString alloc]initWithString:dismatchPart]];
             [description replaceCharactersInRange:NSMakeRange(loc, dismatchPart.length) withString:dismatchPart];
+            
+            self.setCardexplainTextLabel.text =dismatchPart;
         }
     }
     return description;
