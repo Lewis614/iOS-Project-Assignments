@@ -38,7 +38,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+
     [super viewWillAppear:animated];
+    
     self.game.matchBonus = self.gameSetting.matchBonus;
     self.game.mismatchPenalty = self.gameSetting.mismatchPenalty;
     self.game.flipCost = self.gameSetting.flipCost;
@@ -378,5 +380,13 @@
         [self updateUI];
     }
 }
+
+//After a rotation resize the grid and update the user interface:
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    self.grid.size = self.gridView.bounds.size;
+    [self updateUI];
+}
+
+
 
 @end

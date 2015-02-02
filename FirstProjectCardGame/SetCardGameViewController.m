@@ -27,9 +27,11 @@
 //override it
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [self.view setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
     self.removeMatchingCards = YES;
     self.numberOfStartingCards = 12;
     self.maxCardSize = CGSizeMake(120.0, 120.0);
+    
     [self updateUI];
 }
 

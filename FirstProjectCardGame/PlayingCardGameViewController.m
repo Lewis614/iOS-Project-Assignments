@@ -29,8 +29,12 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+    //landscape change to an old view which pervious is portrait. If no this resize, while the auto layout works, buttons and cards which end up at the right hand side in landscape mode do not seem to be touchable any more, thus the auto-resizing mask needs to be adjusted for all controllers
+    [self.view setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
     self.numberOfStartingCards = 35;
     self.maxCardSize = CGSizeMake(80.0, 120.0);
+    
+
     [self updateUI];
 
 }
