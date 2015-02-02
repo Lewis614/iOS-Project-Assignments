@@ -103,7 +103,18 @@
 
     //When dealing a new deck, make sure there is no old card view on screen, reset the card array, the grid and the add-cards button
     for (UIView *subView in self.cardViews) {
-        [subView removeFromSuperview];
+        [UIView animateWithDuration:0.5
+                         animations:^{
+                             subView.frame = CGRectMake(0.0,
+                                                        self.gridView.bounds.size.height,
+                                                        self.grid.cellSize.width/2,
+                                                        self.grid.cellSize.height/2);
+                         } completion:^(BOOL finished) {
+                             [UIView animateWithDuration:0.5 delay:0.0 options:0 animations:^{subView.alpha=0.0;} completion:^(BOOL finished) {
+                                 [subView removeFromSuperview];
+                             }];
+                             
+                         }];
     }
     
     self.game = nil;
@@ -183,6 +194,11 @@
             if(!card.matched){
                 cardView = [self createViewForCard:card];
                 cardView.tag = cardIndex;
+                cardView.frame = CGRectMake(self.gridView.bounds.size.width,
+                                            self.gridView.bounds.size.height,
+                                            self.grid.cellSize.width,
+                                            self.grid.cellSize.height);
+                
                 UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchCard:)];
                 [cardView addGestureRecognizer:tap];
                 [self.cardViews addObject:cardView];
@@ -197,8 +213,21 @@
             } else {
                 //use removeMatchingCards parameter to decided whether it should be removed(should--play, not--set)
                 if(self.removeMatchingCards){
-                    //### if the view is matched, remove it from the top view.
-                    [cardView removeFromSuperview];
+                    [self.cardViews removeObject:cardView];
+                    [UIView animateWithDuration:1.0
+                                     animations:^{
+                                         cardView.frame = CGRectMake(0.0,
+                                                                     self.gridView.bounds.size.height,
+                                                                     self.grid.cellSize.width/2,
+                                                                     self.grid.cellSize.height/2);
+                                         
+                                     } completion:^(BOOL finished) {
+                                         //### if the view is matched, remove it from the top view.
+                                         [UIView animateWithDuration:0.5 delay:0.0 options:0 animations:^{cardView.alpha=0.0;} completion:^(BOOL finished) {
+                                             [cardView removeFromSuperview];
+                                         }];
+                                     }];
+                    
                 }
                 else {
                     cardView.alpha = card.matched ? 0.6 : 1.0;
@@ -208,20 +237,33 @@
             
             
         }
+        /*
         CGRect frame = [self.grid frameOfCellAtRow:viewIndex / self.grid.columnCount
                                           inColumn:viewIndex % self.grid.columnCount];
         frame = CGRectInset(frame, frame.size.width * CARDSPACINGINPERCENT, frame.size.height * CARDSPACINGINPERCENT);
         cardView.frame = frame;
+         */
     }
     
     
     //When updating the user interface move the grid calculations to a loop of its own after you reset the grid to a possible new card count
     self.grid.minimumNumberOfCells = [self.cardViews count];
+    
+    NSUInteger changedViews = 0;
+    
     for (NSUInteger viewIndex = 0; viewIndex < [self.cardViews count]; viewIndex++) {
         CGRect frame = [self.grid frameOfCellAtRow:viewIndex / self.grid.columnCount
                                           inColumn:viewIndex % self.grid.columnCount];
         frame = CGRectInset(frame, frame.size.width * CARDSPACINGINPERCENT, frame.size.height * CARDSPACINGINPERCENT);
-        ((UIView *)self.cardViews[viewIndex]).frame = frame;
+
+        UIView *cardView = (UIView *)self.cardViews[viewIndex];
+        if(![self frame:frame equalToFrame:cardView.frame]){
+            [UIView animateWithDuration:0.5
+                                  delay:1.5 * changedViews++ / [self.cardViews count]
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{ cardView.frame = frame;}
+                             completion:NULL];
+        }
     }
     
     
@@ -238,6 +280,16 @@
     [self updateUIDescription];
 }
 
+//helper method to compare the frame isEqual
+#define FRAMEROUNDINGERROR 0.01
+- (BOOL)frame:(CGRect)frame1 equalToFrame:(CGRect)frame2
+{
+    if (fabs(frame1.size.width - frame2.size.width) > FRAMEROUNDINGERROR) return NO;
+    if (fabs(frame1.size.height - frame2.size.height) > FRAMEROUNDINGERROR) return NO;
+    if (fabs(frame1.origin.x - frame2.origin.x) > FRAMEROUNDINGERROR) return NO;
+    if (fabs(frame1.origin.y - frame2.origin.y) > FRAMEROUNDINGERROR) return NO;
+    return YES;
+}
 
 //helper methods below: (dummy method here, implement them in concrete subclass)
 - (UIView *)createViewForCard:(Card *)card
