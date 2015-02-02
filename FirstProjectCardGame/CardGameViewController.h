@@ -30,6 +30,8 @@
 // Parent class needs a new property to hold the game result,
 @property(strong,nonatomic) GameResult *gameResult;
 
+@property (nonatomic) BOOL removeMatchingCards;
+
 
 -(void) updateUI;
 -(void) updateUIDescription;

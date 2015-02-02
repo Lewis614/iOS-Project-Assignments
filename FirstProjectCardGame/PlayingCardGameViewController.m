@@ -50,6 +50,16 @@
     PlayingCardView *playingCardView = (PlayingCardView *)view;
     playingCardView.rank = playingCard.rank;
     playingCardView.suit = playingCard.suit;
+    
+    //if playing cardview change its status.
+    if(playingCardView.faceUp != playingCard.chosen){
+        [UIView transitionWithView:view
+                          duration:0.5
+                           options:UIViewAnimationOptionTransitionFlipFromLeft
+                        animations:nil
+                        completion:nil];
+    }
+    // use the model status to set view.
     playingCardView.faceUp = playingCard.chosen;
 }
 

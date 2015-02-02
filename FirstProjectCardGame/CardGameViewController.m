@@ -195,12 +195,18 @@
             if(!card.matched){
                 [self updateView:cardView forCard:card];
             } else {
-                //### if the view is matched, remove it from the top view.
-                [cardView removeFromSuperview];
+                //use removeMatchingCards parameter to decided whether it should be removed(should--play, not--set)
+                if(self.removeMatchingCards){
+                    //### if the view is matched, remove it from the top view.
+                    [cardView removeFromSuperview];
+                }
+                else {
+                    cardView.alpha = card.matched ? 0.6 : 1.0;
+                }
                 [self updateView:cardView forCard:card];
             }
             
-            cardView.alpha = card.matched ? 0.6 : 1.0;
+            
         }
         CGRect frame = [self.grid frameOfCellAtRow:viewIndex / self.grid.columnCount
                                           inColumn:viewIndex % self.grid.columnCount];
